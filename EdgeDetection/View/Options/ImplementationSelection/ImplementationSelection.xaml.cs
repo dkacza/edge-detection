@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EdgeDetection.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace EdgeDetection.View.Options.ImplementationSelection
         public ImplementationSelection()
         {
             InitializeComponent();
+        }
+
+        private void csharpImplementation_Checked(object sender, RoutedEventArgs e)
+        {
+            CSharpImplementation cSharpImplementation = new CSharpImplementation();
+            App.SetImplementation(cSharpImplementation);
+        }
+
+        private void cpp_implementation_Checked(object sender, RoutedEventArgs e)
+        {
+            CppImplementation cppImplementation = new CppImplementation();
+            App.SetImplementation(cppImplementation);
+        }
+
+        private void asm_implementation_Checked(object sender, RoutedEventArgs e)
+        {
+            AsmImplementation asmImplementation = new AsmImplementation();
+            App.SetImplementation(asmImplementation);
         }
     }
 }

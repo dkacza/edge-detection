@@ -24,5 +24,11 @@ namespace EdgeDetection.View.Options.ThresholdSelection
         {
             InitializeComponent();
         }
+
+        private void thresholdSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int newVal = (int)Math.Round(thresholdSlider.Value);
+            App.SetThreshold(newVal);
+        }
     }
 }

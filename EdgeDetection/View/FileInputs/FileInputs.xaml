@@ -11,15 +11,15 @@
         <Label Content="Input File"/>
 
         <StackPanel Orientation="Horizontal">
-            <Button Content="Select" Width="36" Height="24" Name="inputSelect" />
+            <Button Content="Select" Width="36" Height="24" Name="inputSelect" Click="inputSelect_Click" />
             <TextBlock Text="No file selected" Margin="16,0,0,0" VerticalAlignment="Center" Name="inputPath" />
         </StackPanel>
 
         <Label Content="Output Location" />
 
         <StackPanel Orientation="Horizontal">
-            <Button Content="Select" Width="36" Height="24" Name="outputSelect"/>
-            <TextBlock Text="No file selected" Margin="16,0,0,0" VerticalAlignment="Center" Name="outputPath"/>
+            <Button Content="Select" Width="36" Height="24" Name="outputSelect" Click="outputSelect_Click"/>
+            <TextBlock Text="No file selected" Margin="16,0,0,0" VerticalAlignment="Center" Name="outputPath" />
         </StackPanel>
 
     </StackPanel>

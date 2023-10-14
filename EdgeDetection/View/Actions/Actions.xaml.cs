@@ -24,5 +24,19 @@ namespace EdgeDetection.View.Actions
         {
             InitializeComponent();
         }
+
+        private void measureBtn_Click(object sender, RoutedEventArgs e)
+        {
+            progressBar.IsIndeterminate = true;
+            App.runMeasurements();
+            progressBar.IsIndeterminate = false;
+        }
+
+        private void convertBtn_Click(object sender, RoutedEventArgs e)
+        {
+            progressBar.IsIndeterminate = true;
+            App.runConversion();
+            progressBar.IsIndeterminate = false;
+        }
     }
 }

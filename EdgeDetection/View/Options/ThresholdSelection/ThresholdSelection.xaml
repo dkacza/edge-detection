@@ -10,7 +10,8 @@
         <Slider Name="thresholdSlider"
             Minimum="0" Maximum="255"
             TickPlacement="BottomRight"
-            TickFrequency="32"/>
+            TickFrequency="32"
+            ValueChanged="thresholdSlider_ValueChanged"/>
         <StackPanel Orientation="Horizontal">
             <Label Content="Value:" />
             <TextBlock Text="{Binding Value, ElementName=thresholdSlider, StringFormat={}{0:0}}"

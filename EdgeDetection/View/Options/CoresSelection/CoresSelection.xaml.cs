@@ -24,5 +24,11 @@ namespace EdgeDetection.View.Options.CoresSelection
         {
             InitializeComponent();
         }
+
+        private void coresSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int newVal = (int)Math.Round(coresSlider.Value);
+            App.SetCores(newVal);
+        }
     }
 }

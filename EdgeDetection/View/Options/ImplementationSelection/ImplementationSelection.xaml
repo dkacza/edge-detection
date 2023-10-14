@@ -7,8 +7,8 @@
              mc:Ignorable="d">
     <StackPanel>
         <Label Content="Implementation"/>
-        <RadioButton IsChecked="true">C#</RadioButton>
-        <RadioButton>C++</RadioButton>
-        <RadioButton>x86 Assembly</RadioButton>
+        <RadioButton IsChecked="true" Name="csharpImplementation" Checked="csharpImplementation_Checked">C#</RadioButton>
+        <RadioButton Name="cpp_implementation" Checked="cpp_implementation_Checked">C++</RadioButton>
+        <RadioButton Name="asm_implementation" Checked="asm_implementation_Checked">x86 Assembly</RadioButton>
     </StackPanel>
 </UserControl>

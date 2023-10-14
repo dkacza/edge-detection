@@ -14,8 +14,8 @@
                 <ColumnDefinition Width="127*"/>
                 <ColumnDefinition Width="273*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="0,0,4,0" Content="Measure Time" x:Name="measureBtn" />
-            <Button Grid.Column="1" Margin="4,0,0,0" Content="Convert" x:Name="convertBtn" Grid.ColumnSpan="2"/>
+            <Button Grid.Column="0" Margin="0,0,4,0" Content="Measure Time" x:Name="measureBtn" Click="measureBtn_Click" />
+            <Button Grid.Column="1" Margin="4,0,0,0" Content="Convert" x:Name="convertBtn" Click="convertBtn_Click" Grid.ColumnSpan="2"/>
         </Grid>
     </StackPanel>
 </UserControl>
