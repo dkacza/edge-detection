@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CsLibrary;
 
 namespace EdgeDetection.Implementations
 {
@@ -13,7 +14,9 @@ namespace EdgeDetection.Implementations
     {
         public void Convert(string inputPath, string outputPath, int cores, int threshold)
         {
-            String diagnosticMsg = $"Converting with C#.\nInput path: {inputPath}\nOutput path: {outputPath}\nThreshold: {threshold}\nCores: {cores}";
+
+            int testVal = CsImplementation.Test(1, 2);
+            String diagnosticMsg = $"Converting with C#.\nInput path: {inputPath}\nOutput path: {outputPath}\nThreshold: {threshold}\nCores: {cores}\nTest value from DLL: {testVal}";
             MessageBox.Show(diagnosticMsg);
 
             Bitmap inputImage = new Bitmap(inputPath); // Load your input image

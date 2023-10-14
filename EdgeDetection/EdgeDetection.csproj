@@ -8,4 +8,10 @@
     <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="CsLibrary">
+      <HintPath>..\CsLibrary\bin\Debug\CsLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
