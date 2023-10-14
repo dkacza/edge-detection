@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EdgeDetection
-build_property.ProjectDir = D:\Dev\CS\EdgeDetection\EdgeDetection\
+build_property.ProjectDir = D:\Dev\CS\edge-detection\EdgeDetection\

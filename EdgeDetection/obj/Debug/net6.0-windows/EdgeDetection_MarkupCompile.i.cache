@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Dev\CS\EdgeDetection\EdgeDetection\obj\Debug\net6.0-windows\
+D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\
 EdgeDetection
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\Dev\CS\EdgeDetection\EdgeDetection\App.xaml
-11407045341
+D:\Dev\CS\edge-detection\EdgeDetection\App.xaml
+8-2014253488
 
-5-989348615
+12-1405411559
 194183970531
-MainWindow.xaml;
+MainWindow.xaml;View\Actions\Actions.xaml;View\FileInputs\FileInputs.xaml;View\Options\CoresSelection\CoresSelection.xaml;View\Options\ImplementationSelection\ImplementationSelection.xaml;View\Options\Options.xaml;View\Options\ThresholdSelection\ThresholdSelection.xaml;View\Title\Title.xaml;
 
-False
+True
 

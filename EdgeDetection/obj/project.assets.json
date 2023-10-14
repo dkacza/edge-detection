@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dev\\CS\\EdgeDetection\\EdgeDetection\\EdgeDetection.csproj",
+      "projectUniqueName": "D:\\Dev\\CS\\edge-detection\\EdgeDetection\\EdgeDetection.csproj",
       "projectName": "EdgeDetection",
-      "projectPath": "D:\\Dev\\CS\\EdgeDetection\\EdgeDetection\\EdgeDetection.csproj",
+      "projectPath": "D:\\Dev\\CS\\edge-detection\\EdgeDetection\\EdgeDetection.csproj",
       "packagesPath": "C:\\Users\\dawid\\.nuget\\packages\\",
-      "outputPath": "D:\\Dev\\CS\\EdgeDetection\\EdgeDetection\\obj\\",
+      "outputPath": "D:\\Dev\\CS\\edge-detection\\EdgeDetection\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dawid\\AppData\\Roaming\\NuGet\\NuGet.Config",

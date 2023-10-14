@@ -4,9 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EdgeDetection"
+        xmlns:Title="clr-namespace:EdgeDetection.View.Title"
+        xmlns:FileInputs="clr-namespace:EdgeDetection.View.FileInputs"
+        xmlns:Options="clr-namespace:EdgeDetection.View.Options"
+        xmlns:Actions="clr-namespace:EdgeDetection.View.Actions"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Edge Detection" Height="512" Width="320">
     <Grid>
+        <Grid Margin="16,4">
+            <Grid.RowDefinitions>
+                <!--Title-->
+                <RowDefinition Height="55"/>
+                <!--File inputs-->
+                <RowDefinition Height="100"/>
+                <!--Algorithm options-->
+                <RowDefinition Height="*"/>
+                <!--Commands-->
+                <RowDefinition Height="50"/>
+                <!--Footer-->
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            
+            <Title:Title Grid.Row="0"/>
+            <FileInputs:FileInputs Grid.Row="1"/>
+            <Options:Options Grid.Row="2"/>
+            <Actions:Actions Grid.Row="3"/>
+            <TextBlock Grid.Row="4" Text="Dawid Kacza - 2023"/>
 
+        </Grid>
     </Grid>
 </Window>

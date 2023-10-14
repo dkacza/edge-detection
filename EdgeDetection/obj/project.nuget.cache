@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zEC6kLNDL6SXCFXcMejB2WO6+bH7ao6BtI+cxGA+8w6x27NqxWw55uqoVgDrr582rYetw3lvwuP2wtTLk+e65Q==",
+  "dgSpecHash": "5p9Cl7OYMsu9S7qGWfChUbfYAAkEuatU/PN08mEz9IfNLZjmQbNQxy4kZCmJNbDTM9ExUFQU4jQ0WhUDg2ISVw==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\CS\\EdgeDetection\\EdgeDetection\\EdgeDetection.csproj",
+  "projectFilePath": "D:\\Dev\\CS\\edge-detection\\EdgeDetection\\EdgeDetection.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

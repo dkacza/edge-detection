@@ -7,7 +7,51 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\Actions\Actions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\FileInputs\FileInputs.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Options\CoresSelection\CoresSelection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Options\ImplementationSelection\ImplementationSelection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Options\Options.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Options\ThresholdSelection\ThresholdSelection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Title\Title.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Actions\Actions.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\FileInputs\FileInputs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Options\CoresSelection\CoresSelection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Options\ImplementationSelection\ImplementationSelection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Options\Options.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Options\ThresholdSelection\ThresholdSelection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Title\Title.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
