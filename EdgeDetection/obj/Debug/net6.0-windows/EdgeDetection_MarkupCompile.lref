@@ -1,4 +1,4 @@
-﻿D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 
 FD:\Dev\CS\edge-detection\EdgeDetection\MainWindow.xaml;;
 FD:\Dev\CS\edge-detection\EdgeDetection\View\Actions\Actions.xaml;;
@@ -8,4 +8,5 @@ FD:\Dev\CS\edge-detection\EdgeDetection\View\Options\ImplementationSelection\Imp
 FD:\Dev\CS\edge-detection\EdgeDetection\View\Options\Options.xaml;;
 FD:\Dev\CS\edge-detection\EdgeDetection\View\Options\ThresholdSelection\ThresholdSelection.xaml;;
 FD:\Dev\CS\edge-detection\EdgeDetection\View\Title\Title.xaml;;
+FD:\Dev\CS\edge-detection\EdgeDetection\View\ImageOverview\ImageOverview.xaml;;
 

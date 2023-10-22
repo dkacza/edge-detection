@@ -23,6 +23,7 @@ namespace EdgeDetection
         public MainWindow()
         {
             InitializeComponent();
+            App.SetImageOverview(imageOverviewControl);
         }
     }
 }

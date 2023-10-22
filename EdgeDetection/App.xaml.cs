@@ -1,4 +1,5 @@
 ﻿using EdgeDetection.Implementations;
+using EdgeDetection.View.ImageOverview;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,6 +20,7 @@ namespace EdgeDetection
         private static int cores = 1;
         private static int threshold = 0;
         private static IConverter converter = new CSharpImplementation();
+        private static ImageOverview imageOverview;
 
         public static void runConversion()
         {
@@ -28,6 +30,7 @@ namespace EdgeDetection
                 return;
             }
             converter.Convert(inputPath, outputPath, cores, threshold);
+            imageOverview.DisplayOutputImage(outputPath + "\\converted.jpg");
         }
 
         public static void runMeasurements()
@@ -46,6 +49,7 @@ namespace EdgeDetection
         public static void SetInputPath(string incomingPath)
         {
             inputPath = incomingPath;
+            imageOverview.DisplayInputImage(inputPath);
         }
         public static void SetOutputPath(string incomingPath)
         {
@@ -55,6 +59,10 @@ namespace EdgeDetection
         {
             converter = incomingConverter;
         }
+        public static void SetImageOverview(ImageOverview incomingImageOverview)
+        {
+            imageOverview = incomingImageOverview;
+        }   
 
     }
 }

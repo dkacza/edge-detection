@@ -13,6 +13,9 @@
     <Compile Update="View\FileInputs\FileInputs.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ImageOverview\ImageOverview.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Options\CoresSelection\CoresSelection.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\FileInputs\FileInputs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ImageOverview\ImageOverview.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Options\CoresSelection\CoresSelection.xaml">

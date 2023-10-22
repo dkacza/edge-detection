@@ -37,3 +37,5 @@ D:\Dev\CS\edge-detection\EdgeDetection\bin\Debug\net6.0-windows\CsLibrary.dll
 D:\Dev\CS\edge-detection\EdgeDetection\bin\Debug\net6.0-windows\CsLibrary.pdb
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\EdgeDetection.csproj.AssemblyReference.cache
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\EdgeDetection.csproj.CopyComplete
+D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\ImageOverview\ImageOverview.g.cs
+D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\ImageOverview\ImageOverview.baml

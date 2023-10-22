@@ -8,8 +8,9 @@
         xmlns:FileInputs="clr-namespace:EdgeDetection.View.FileInputs"
         xmlns:Options="clr-namespace:EdgeDetection.View.Options"
         xmlns:Actions="clr-namespace:EdgeDetection.View.Actions"
+        xmlns:ImageOverview="clr-namespace:EdgeDetection.View.ImageOverview"
         mc:Ignorable="d"
-        Title="Edge Detection" Height="512" Width="320">
+        Title="Edge Detection" Height="512" Width="720">
     <Grid>
         <Grid Margin="16,4">
             <Grid.RowDefinitions>
@@ -24,12 +25,18 @@
                 <!--Footer-->
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"></ColumnDefinition>
+                <ColumnDefinition Width="16"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             
-            <Title:Title Grid.Row="0"/>
-            <FileInputs:FileInputs Grid.Row="1"/>
-            <Options:Options Grid.Row="2"/>
-            <Actions:Actions Grid.Row="3"/>
-            <TextBlock Grid.Row="4" Text="Dawid Kacza - 2023"/>
+            <Title:Title Grid.Row="0" Grid.Column="0"/>
+            <FileInputs:FileInputs Grid.Row="1" Grid.Column="0"/>
+            <Options:Options Grid.Row="2" Grid.Column="0"/>
+            <Actions:Actions Grid.Row="3" Grid.Column="0"/>
+            <ImageOverview:ImageOverview x:Name="imageOverviewControl" Grid.RowSpan="3" Grid.Column="2"/>
+            <TextBlock Grid.Row="3" Grid.Column="2">Dawid Kacza - 2023<LineBreak/>Języki Asemblerowe</TextBlock>
 
         </Grid>
     </Grid>
