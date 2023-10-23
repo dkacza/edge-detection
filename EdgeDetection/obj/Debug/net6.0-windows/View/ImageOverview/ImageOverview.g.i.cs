@@ -70,7 +70,7 @@ namespace EdgeDetection.View.ImageOverview {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EdgeDetection;V1.0.0.0;component/view/imageoverview/imageoverview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EdgeDetection;component/view/imageoverview/imageoverview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\ImageOverview\ImageOverview.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

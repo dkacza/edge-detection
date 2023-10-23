@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Dev\CS\edge-detection\EdgeDetection\App.xaml
 9551785951
 
-171048272884
+182033596395
 204-104341722
 MainWindow.xaml;View\Actions\Actions.xaml;View\FileInputs\FileInputs.xaml;View\ImageOverview\ImageOverview.xaml;View\Options\CoresSelection\CoresSelection.xaml;View\Options\ImplementationSelection\ImplementationSelection.xaml;View\Options\Options.xaml;View\Options\ThresholdSelection\ThresholdSelection.xaml;View\Title\Title.xaml;
 
-True
+False
 

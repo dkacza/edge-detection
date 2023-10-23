@@ -18,7 +18,19 @@ namespace EdgeDetection.Implementations
             MessageBox.Show(diagnosticMsg);
 
             Bitmap inputImage = new Bitmap(inputPath);
-            Bitmap outputImage = CsEdgeDetection.ApplySobelEdgeDetection(inputImage, threshold);
+
+
+            /*BITMAP TO BYTE ARRAY TEST*/
+
+            int[] imageData = BitmapConverter.convertBitmapToIntArray(inputImage);
+            Bitmap bitmapFromIntArr = BitmapConverter.ConvertIntArrayToBitmap(imageData, inputImage.Width, inputImage.Height);
+            Bitmap outputImage = CsEdgeDetection.ApplySobelEdgeDetection(bitmapFromIntArr, threshold);
+
+
+
+            /*END OF TEST*/
+
+            // Bitmap outputImage = CsEdgeDetection.ApplySobelEdgeDetection(inputImage, threshold);
 
             outputImage.Save(outputPath + "\\converted.jpg", ImageFormat.Jpeg);
         }
