@@ -28,22 +28,25 @@ namespace EdgeDetection
         // Run single conversion with specified threshold and core number.
         public static void runConversion()
         {
-            actionsViewInstance.cpuTicks.Text = "";
+            // Check if paths are valid
             if (inputPath == null || inputPath.Equals("") || outputPath == null || outputPath.Equals(""))
             {
                 MessageBox.Show("Select paths for input and output");
                 return;
             }
 
+            // Get current timestamp for unique file name
             DateTimeOffset now = (DateTimeOffset)DateTime.UtcNow;
             string outputFileName = "conv_" + now.ToUnixTimeMilliseconds() + ".bmp";
 
-
+            // Display CPU ticks
             long timeResult = converter.Convert(inputPath, outputPath + "\\" + outputFileName, cores, threshold);
             actionsViewInstance.cpuTicks.Text = "CPU ticks: " + timeResult;
 
+            // Display preview
             imageOverviewInstance.DisplayOutputImage(outputPath + "\\" + outputFileName);
         }
+
         // Run conversion for both x86 assembly and C# DLL. Run it for every thread configuration possible.
         public static void runMeasurements()
         {

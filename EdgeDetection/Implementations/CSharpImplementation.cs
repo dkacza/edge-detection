@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,21 @@ namespace EdgeDetection.Implementations
     {
         public long Convert(string inputPath, string outputPath, int cores, int threshold)
         {
+            // Loading DLL dynamicaly
+            MethodInfo? convertedMethod;
+            try
+            {
+                var dllPath = "D:\\Dev\\CS\\edge-detection\\CsLibrary\\bin\\Debug\\CSLibrary.dll";
+                var assembly = Assembly.LoadFile(dllPath);
+                var type = assembly.GetType("CsLibrary.CsEdgeDetection");
+                convertedMethod = type.GetMethod("convert");
+            } 
+            catch
+            {
+                return 0;
+            }
+
+
             // Instatiate services
             FileService fileService = new FileService();
             PaddingService paddingService = new PaddingService();
@@ -60,7 +76,8 @@ namespace EdgeDetection.Implementations
 
                 Thread thread = new Thread(() =>
                 {
-                    CsEdgeDetection.convert(paddedBitmap, startIndexArg, outputArg, pixelsToProcessArg);
+                    //CsEdgeDetection.convert(paddedBitmap, startIndexArg, outputArg, pixelsToProcessArg);
+                    convertedMethod.Invoke(null, new object[] { paddedBitmap, startIndexArg, outputArg, pixelsToProcessArg });
                 });
                 threadArray[i] = thread;
                 
