@@ -21,7 +21,7 @@
                 <!--Algorithm options-->
                 <RowDefinition Height="*"/>
                 <!--Commands-->
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="80"/>
                 <!--Footer-->
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
@@ -34,7 +34,7 @@
             <Title:Title Grid.Row="0" Grid.Column="0"/>
             <FileInputs:FileInputs Grid.Row="1" Grid.Column="0"/>
             <Options:Options Grid.Row="2" Grid.Column="0"/>
-            <Actions:Actions Grid.Row="3" Grid.Column="0"/>
+            <Actions:Actions x:Name="actionsControl"  Grid.Row="3" Grid.Column="0"/>
             <ImageOverview:ImageOverview x:Name="imageOverviewControl" Grid.RowSpan="3" Grid.Column="2"/>
             <TextBlock Grid.Row="3" Grid.Column="2">Dawid Kacza - 2023<LineBreak/>Języki Asemblerowe</TextBlock>
 

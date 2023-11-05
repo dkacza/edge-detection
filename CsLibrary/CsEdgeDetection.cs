@@ -9,61 +9,29 @@ namespace CsLibrary
 {
     public static class CsEdgeDetection
     {
-        public static Bitmap ApplySobelEdgeDetection(Bitmap inputImage, int threshold)
+        public static unsafe void convert(byte[] input, int startIndex, byte[] output, int pixelsToProcess)
         {
-            int width = inputImage.Width;
-            int height = inputImage.Height;
-
-            Bitmap outputImage = new Bitmap(width, height);
-
-            int[,] sobelX = {
-                { -1, 0, 1 },
-                { -2, 0, 2 },
-                { -1, 0, 1 }
-            };
-
-            int[,] sobelY = {
-                { -1, -2, -1 },
-                { 0, 0, 0 },
-                { 1, 2, 1 }
-            };
-
-            for (int y = 1; y < height - 1; y++)
+            int index = startIndex;
+            for (int i = 0; i < pixelsToProcess; i++)
             {
-                for (int x = 1; x < width - 1; x++)
-                {
-                    int gx = 0;
-                    int gy = 0;
+                byte grayscale = getGrayscale(input, index);
 
-                    for (int j = -1; j <= 1; j++)
-                    {
-                        for (int i = -1; i <= 1; i++)
-                        {
-                            Color pixel = inputImage.GetPixel(x + i, y + j);
-                            int grayValue = (int)(pixel.R * 0.299 + pixel.G * 0.587 + pixel.B * 0.114);
+                output[index - startIndex] = grayscale;
+                output[index - startIndex + 1] = grayscale;
+                output[index - startIndex + 2] = grayscale;
 
-                            gx += grayValue * sobelX[j + 1, i + 1];
-                            gy += grayValue * sobelY[j + 1, i + 1];
-                        }
-                    }
-
-                    int gradient = (int)Math.Sqrt(gx * gx + gy * gy);
-                    gradient = Math.Min(255, Math.Max(0, gradient)); // 0-255
-
-                    if (gradient >= threshold)
-                    {
-                        Color newPixel = Color.FromArgb(255, 255, 255); // White for edges
-                        outputImage.SetPixel(x, y, newPixel);
-                    }
-                    else
-                    {
-                        Color newPixel = Color.FromArgb(0, 0, 0); // Black for non-edges
-                        outputImage.SetPixel(x, y, newPixel);
-                    }
-                }
+                index += 3;
             }
+        }
+        private static byte getGrayscale(byte[] input, int index)
+        {
+            byte blue = input[index];
+            byte green = input[index + 1];
+            byte red = input[index + 2];
 
-            return outputImage;
+            byte grayscale = (byte)(0.299 * red + 0.587 * green + 0.114 * blue);
+
+            return grayscale;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace EdgeDetection.View.FileInputs
         private void inputSelect_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "JPG image | *.jpg";
+            fileDialog.Filter = "BMP image | *.bmp";
             bool? success = fileDialog.ShowDialog();
             if (success == true)
             {

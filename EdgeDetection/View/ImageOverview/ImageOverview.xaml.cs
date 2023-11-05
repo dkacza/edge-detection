@@ -43,6 +43,15 @@ namespace EdgeDetection.View.ImageOverview
 
             outputImageViewer.Source = image;
         }
+        public void CloseImagePreview()
+        {
+            if (outputImageViewer.Source is BitmapImage image)
+            {
+                image.StreamSource?.Close();
+                image.UriSource = null;
+                outputImageViewer.Source = null;
+            }
+        }
 
     }
 }

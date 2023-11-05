@@ -32,12 +32,6 @@ namespace EdgeDetection.View.Options.ImplementationSelection
             App.SetImplementation(cSharpImplementation);
         }
 
-        private void cpp_implementation_Checked(object sender, RoutedEventArgs e)
-        {
-            CppImplementation cppImplementation = new CppImplementation();
-            App.SetImplementation(cppImplementation);
-        }
-
         private void asm_implementation_Checked(object sender, RoutedEventArgs e)
         {
             AsmImplementation asmImplementation = new AsmImplementation();

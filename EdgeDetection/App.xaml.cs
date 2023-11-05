@@ -1,9 +1,11 @@
 ﻿using EdgeDetection.Implementations;
+using EdgeDetection.View.Actions;
 using EdgeDetection.View.ImageOverview;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,25 +20,38 @@ namespace EdgeDetection
         private static string? inputPath;
         private static string? outputPath;
         private static int cores = 1;
-        private static int threshold = 0;
-        private static IConverter converter = new CSharpImplementation();
-        private static ImageOverview imageOverview;
+        private static int threshold = 0; 
+        private static IConverter converter = new CSharpImplementation(); // Selected implementation
+        private static ImageOverview imageOverviewInstance; // Instance of image view to display previews
+        private static Actions actionsViewInstance;
 
+        // Run single conversion with specified threshold and core number.
         public static void runConversion()
         {
+            actionsViewInstance.cpuTicks.Text = "";
             if (inputPath == null || inputPath.Equals("") || outputPath == null || outputPath.Equals(""))
             {
                 MessageBox.Show("Select paths for input and output");
                 return;
             }
-            converter.Convert(inputPath, outputPath, cores, threshold);
-            imageOverview.DisplayOutputImage(outputPath + "\\converted.jpg");
-        }
 
+            DateTimeOffset now = (DateTimeOffset)DateTime.UtcNow;
+            string outputFileName = "conv_" + now.ToUnixTimeMilliseconds() + ".bmp";
+
+
+            long timeResult = converter.Convert(inputPath, outputPath + "\\" + outputFileName, cores, threshold);
+            actionsViewInstance.cpuTicks.Text = "CPU ticks: " + timeResult;
+
+            imageOverviewInstance.DisplayOutputImage(outputPath + "\\" + outputFileName);
+        }
+        // Run conversion for both x86 assembly and C# DLL. Run it for every thread configuration possible.
         public static void runMeasurements()
         {
             MessageBox.Show("Performing measurements");
         }
+
+
+        // Getters and setters
         public static void SetCores(int incomingCores)
         {
             cores = incomingCores;
@@ -49,7 +64,7 @@ namespace EdgeDetection
         public static void SetInputPath(string incomingPath)
         {
             inputPath = incomingPath;
-            imageOverview.DisplayInputImage(inputPath);
+            imageOverviewInstance.DisplayInputImage(inputPath);
         }
         public static void SetOutputPath(string incomingPath)
         {
@@ -61,8 +76,12 @@ namespace EdgeDetection
         }
         public static void SetImageOverview(ImageOverview incomingImageOverview)
         {
-            imageOverview = incomingImageOverview;
-        }   
+            imageOverviewInstance = incomingImageOverview;
+        }
+        public static void SetActionView(Actions actions)
+        {
+            actionsViewInstance = actions;
+        }
 
     }
 }

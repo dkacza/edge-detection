@@ -24,6 +24,7 @@ namespace EdgeDetection
         {
             InitializeComponent();
             App.SetImageOverview(imageOverviewControl);
+            App.SetActionView(actionsControl);
         }
     }
 }
