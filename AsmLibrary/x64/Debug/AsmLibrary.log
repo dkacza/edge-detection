@@ -1,0 +1,4 @@
+﻿  Assembling asmLibrary.asm...
+     Creating library D:\Dev\CS\edge-detection\x64\Debug\AsmLibrary.lib and object D:\Dev\CS\edge-detection\x64\Debug\AsmLibrary.exp
+AsmLibrary.exp : warning LNK4070: /OUT:JAAsm.dll directive in .EXP differs from output filename 'D:\Dev\CS\edge-detection\x64\Debug\AsmLibrary.dll'; ignoring directive
+  AsmLibrary.vcxproj -> D:\Dev\CS\edge-detection\x64\Debug\AsmLibrary.dll
