@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdgeDetection", "EdgeDetection\EdgeDetection.csproj", "{F6117DCA-EED6-46EC-8F0F-662F5CE16F76}"
+	ProjectSection(ProjectDependencies) = postProject
+		{581F8E51-6594-498B-BF72-F8BCF0EA7517} = {581F8E51-6594-498B-BF72-F8BCF0EA7517}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsLibrary", "CsLibrary\CsLibrary.csproj", "{581F8E51-6594-498B-BF72-F8BCF0EA7517}"
 EndProject

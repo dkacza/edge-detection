@@ -66,18 +66,17 @@ namespace EdgeDetection.Implementations
             int paddedHeight = height + 2;
 
             // Split data for threads
-            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedHeight, paddedWidth, cores, bytesPerPixel);
+            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores, bytesPerPixel);
             Thread[] threadArray = new Thread[cores];
             for (int i = 0; i < cores; i++)
             {
-                int startIndexArg = conversionTasks[i].startIndex;
-                byte[] outputArg = conversionTasks[i].outputData;
-                int pixelsToProcessArg = conversionTasks[i].pixelsToProcess;
+                int startY = conversionTasks[i].startY;
+                int endY = conversionTasks[i].endY;
+                byte[] output = conversionTasks[i].outputData;
 
                 Thread thread = new Thread(() =>
                 {
-                    //CsEdgeDetection.convert(paddedBitmap, startIndexArg, outputArg, pixelsToProcessArg);
-                    convertedMethod.Invoke(null, new object[] { paddedBitmap, startIndexArg, outputArg, pixelsToProcessArg });
+                    convertedMethod.Invoke(null, new object[] { paddedBitmap, output, paddedWidth, paddedHeight, startY, endY });
                 });
                 threadArray[i] = thread;
                 
