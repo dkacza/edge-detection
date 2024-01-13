@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System;
 
 namespace EdgeDetection.View.Options.CoresSelection
 {
@@ -23,6 +24,10 @@ namespace EdgeDetection.View.Options.CoresSelection
         public CoresSelection()
         {
             InitializeComponent();
+            int coreCount = Environment.ProcessorCount;
+            coresSlider.Value = coreCount;
+            App.SetCores(coreCount);
+
         }
 
         private void coresSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

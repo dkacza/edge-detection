@@ -25,9 +25,6 @@
     <Compile Update="View\Options\Options.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Options\ThresholdSelection\ThresholdSelection.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\Title\Title.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -52,9 +49,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Options\Options.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Options\ThresholdSelection\ThresholdSelection.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Title\Title.xaml">

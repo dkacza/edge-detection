@@ -31,8 +31,6 @@ D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\Cor
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\Options.baml
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\ImplementationSelection\ImplementationSelection.g.cs
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\ImplementationSelection\ImplementationSelection.baml
-D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\ThresholdSelection\ThresholdSelection.g.cs
-D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\View\Options\ThresholdSelection\ThresholdSelection.baml
 D:\Dev\CS\edge-detection\EdgeDetection\bin\Debug\net6.0-windows\CsLibrary.dll
 D:\Dev\CS\edge-detection\EdgeDetection\bin\Debug\net6.0-windows\CsLibrary.pdb
 D:\Dev\CS\edge-detection\EdgeDetection\obj\Debug\net6.0-windows\EdgeDetection.csproj.AssemblyReference.cache

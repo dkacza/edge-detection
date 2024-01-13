@@ -8,7 +8,8 @@ namespace EdgeDetection.Implementations
 {
     public interface IConverter
     {
-        public long Convert(string inputPath, string outputPath, int cores, int threshold);
+        public long Convert(string inputPath, string outputPath, int cores);
+        public long Measure(string inputPath, int cores);
         
     }
 }

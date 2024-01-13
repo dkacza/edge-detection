@@ -6,11 +6,9 @@
              xmlns:local="clr-namespace:EdgeDetection.View.Options"
              xmlns:CoresSelection="clr-namespace:EdgeDetection.View.Options.CoresSelection"
              xmlns:ImplementationSelection="clr-namespace:EdgeDetection.View.Options.ImplementationSelection"
-             xmlns:ThresholdSelection="clr-namespace:EdgeDetection.View.Options.ThresholdSelection"
              mc:Ignorable="d">
     <StackPanel>
         <ImplementationSelection:ImplementationSelection />
         <CoresSelection:CoresSelection />
-        <ThresholdSelection:ThresholdSelection/>
     </StackPanel>
 </UserControl>
