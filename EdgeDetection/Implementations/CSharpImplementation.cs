@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using CsLibrary;
 
 namespace EdgeDetection.Implementations
 {
     public class CSharpImplementation : IConverter
     {
+        private static string relativePath = "..\\..\\..\\..\\..\\CsLibrary\\bin\\x64\\Release\\CSLibrary.dll";
         public long Convert(string inputPath, string outputPath, int cores)
         {
             // Loading DLL dynamicaly
             MethodInfo? convertedMethod;
             try
             {
-                var dllPath = "D:\\Dev\\CS\\edge-detection\\CsLibrary\\bin\\Debug\\CSLibrary.dll";
+                var dllPath = Path.GetFullPath(relativePath);
                 var assembly = Assembly.LoadFile(dllPath);
                 var type = assembly.GetType("CsLibrary.CsEdgeDetection");
                 convertedMethod = type.GetMethod("convert");
@@ -59,14 +60,18 @@ namespace EdgeDetection.Implementations
             Array.Copy(bitmapFromFile, bitmapHeader, dataOffset);
             Array.Copy(bitmapFromFile, dataOffset, bitmapWithoutHeader, 0, bitmapWithoutHeader.Length);
 
+            // Convert to grayscale
+            byte[] grayscaleData = new byte[width * height];
+            grayscaleData = GrayscaleService.ConvertToGrayscale(bitmapWithoutHeader, grayscaleData, width, height);
+
 
             // Pixel padding
-            byte[] paddedBitmap = paddingService.padBitmap(bitmapWithoutHeader, width, height);
+            byte[] paddedBitmap = paddingService.padBitmap(grayscaleData, width, height);
             int paddedWidth = width + 2;
             int paddedHeight = height + 2;
 
             // Split data for threads
-            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores, bytesPerPixel);
+            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores);
             Thread[] threadArray = new Thread[cores];
             for (int i = 0; i < cores; i++)
             {
@@ -104,9 +109,17 @@ namespace EdgeDetection.Implementations
 
             // Remove padding and attach header
             byte[] concatenatedChunksWithoutPadding = paddingService.removePadding(concatenatedChunks, paddedWidth, paddedHeight);
+
+            // Restore grayscale to RGB
             byte[] outputBitmap = new byte[bitmapFromFile.Length];
+            for (int i = 0; i < concatenatedChunksWithoutPadding.Length; i++)
+            {
+                outputBitmap[i * 3 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 1 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 2 + dataOffset] = concatenatedChunksWithoutPadding[i];
+            }
+
             bitmapHeader.CopyTo(outputBitmap, 0);
-            Array.Copy(concatenatedChunksWithoutPadding, 0, outputBitmap, dataOffset, concatenatedChunksWithoutPadding.Length);
 
 
             // Save to file
@@ -122,7 +135,7 @@ namespace EdgeDetection.Implementations
             MethodInfo? convertedMethod;
             try
             {
-                var dllPath = "D:\\Dev\\CS\\edge-detection\\CsLibrary\\bin\\Debug\\CSLibrary.dll";
+                var dllPath = Path.GetFullPath(relativePath);
                 var assembly = Assembly.LoadFile(dllPath);
                 var type = assembly.GetType("CsLibrary.CsEdgeDetection");
                 convertedMethod = type.GetMethod("convert");
@@ -160,14 +173,18 @@ namespace EdgeDetection.Implementations
             Array.Copy(bitmapFromFile, bitmapHeader, dataOffset);
             Array.Copy(bitmapFromFile, dataOffset, bitmapWithoutHeader, 0, bitmapWithoutHeader.Length);
 
+            // Convert to grayscale
+            byte[] grayscaleData = new byte[width * height];
+            grayscaleData = GrayscaleService.ConvertToGrayscale(bitmapWithoutHeader, grayscaleData, width, height);
+
 
             // Pixel padding
-            byte[] paddedBitmap = paddingService.padBitmap(bitmapWithoutHeader, width, height);
+            byte[] paddedBitmap = paddingService.padBitmap(grayscaleData, width, height);
             int paddedWidth = width + 2;
             int paddedHeight = height + 2;
 
             // Split data for threads
-            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores, bytesPerPixel);
+            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores);
             Thread[] threadArray = new Thread[cores];
             for (int i = 0; i < cores; i++)
             {
@@ -205,9 +222,16 @@ namespace EdgeDetection.Implementations
 
             // Remove padding and attach header
             byte[] concatenatedChunksWithoutPadding = paddingService.removePadding(concatenatedChunks, paddedWidth, paddedHeight);
+
+            // Restore grayscale to RGB
             byte[] outputBitmap = new byte[bitmapFromFile.Length];
+            for (int i = 0; i < concatenatedChunksWithoutPadding.Length; i++)
+            {
+                outputBitmap[i * 3 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 1 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 2 + dataOffset] = concatenatedChunksWithoutPadding[i];
+            }
             bitmapHeader.CopyTo(outputBitmap, 0);
-            Array.Copy(concatenatedChunksWithoutPadding, 0, outputBitmap, dataOffset, concatenatedChunksWithoutPadding.Length);
 
             return timeEnd - timeStart;
         }

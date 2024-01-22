@@ -11,7 +11,6 @@ namespace CsLibrary
     {
         public static unsafe void convert(byte[] input, byte[] output, int width, int height, int startY, int endY)
         {
-            int BYTES_PER_PIXEL = 3;
             int y = startY;
             int outputRow = 0;
             // Process each row
@@ -26,8 +25,8 @@ namespace CsLibrary
                 }
 
                 // Calculate the indexes of first cell in input and output array
-                int rowIndex = (y * width * BYTES_PER_PIXEL);
-                int outputRowIndex = ((y - startY) * width * BYTES_PER_PIXEL);
+                int rowIndex = (y * width);
+                int outputRowIndex = ((y - startY) * width);
 
 
                 // Process each cell in a row
@@ -42,8 +41,8 @@ namespace CsLibrary
                     }
 
                     // Calculate current cell indexes for input and output array
-                    int cellIndex = rowIndex + (x * BYTES_PER_PIXEL);
-                    int outputCellIndex = outputRowIndex + (x * BYTES_PER_PIXEL);
+                    int cellIndex = rowIndex + (x);
+                    int outputCellIndex = outputRowIndex + (x);
 
                     // Declaring variables for the both vertical and horizontal kernels
                     int verticalKernelSum = 0;
@@ -61,40 +60,40 @@ namespace CsLibrary
 
                     // Upper row
                     // Upper row is accessed by subtracting the size of one row from the current cell index
-                    int middleCellFromUpperRowIndex = cellIndex - (width * BYTES_PER_PIXEL);
+                    int middleCellFromUpperRowIndex = cellIndex - (width);
                     // Top left
-                    verticalKernelSum += (-1) * getGrayscale(input, middleCellFromUpperRowIndex - BYTES_PER_PIXEL);
-                    horizontalKernelSum += (1) * getGrayscale(input, middleCellFromUpperRowIndex - BYTES_PER_PIXEL);
+                    verticalKernelSum += (-1) * input[middleCellFromUpperRowIndex - 1];
+                    horizontalKernelSum += (1) * input[middleCellFromUpperRowIndex - 1];
                     // Top center
                     verticalKernelSum += 0;
-                    horizontalKernelSum += (2) * getGrayscale(input, middleCellFromUpperRowIndex);
+                    horizontalKernelSum += (2) * input[middleCellFromUpperRowIndex];
                     // Top right
-                    verticalKernelSum += (1) * getGrayscale(input, middleCellFromUpperRowIndex + BYTES_PER_PIXEL);
-                    horizontalKernelSum += (1) * getGrayscale(input, middleCellFromUpperRowIndex + BYTES_PER_PIXEL);
+                    verticalKernelSum += (1) * input[middleCellFromUpperRowIndex + 1];
+                    horizontalKernelSum += (1) * input[middleCellFromUpperRowIndex + 1];
 
                     // Center (curent) row
                     // Center left
-                    verticalKernelSum += (-2) * getGrayscale(input, cellIndex - BYTES_PER_PIXEL);
+                    verticalKernelSum += (-2) * input[cellIndex - 1];
                     horizontalKernelSum += 0;
                     // Center center
                     verticalKernelSum += 0;
                     horizontalKernelSum += 0;
                     // Center Right
-                    verticalKernelSum += (2) * getGrayscale(input, cellIndex + BYTES_PER_PIXEL);
+                    verticalKernelSum += (2) * input[cellIndex + 1];
                     horizontalKernelSum += 0;
 
                     // Bottom row
                     // Bottom row is accessed by adding the size of one row to the current cell index
-                    int middleCellFromBottomRowIndex = cellIndex + (width * BYTES_PER_PIXEL);
+                    int middleCellFromBottomRowIndex = cellIndex + (width);
                     // Bottom left
-                    verticalKernelSum += (-1) * getGrayscale(input, middleCellFromBottomRowIndex - BYTES_PER_PIXEL);
-                    horizontalKernelSum += (-1) * getGrayscale(input, middleCellFromBottomRowIndex - BYTES_PER_PIXEL);
+                    verticalKernelSum += (-1) * input[middleCellFromBottomRowIndex - 1];
+                    horizontalKernelSum += (-1) * input[middleCellFromBottomRowIndex - 1];
                     // Bottom center
                     verticalKernelSum += 0;
-                    horizontalKernelSum += (-2) * getGrayscale(input, middleCellFromBottomRowIndex);
+                    horizontalKernelSum += (-2) * input[middleCellFromBottomRowIndex];
                     // Bottom right
-                    verticalKernelSum += (1) * getGrayscale(input, middleCellFromBottomRowIndex + BYTES_PER_PIXEL);
-                    horizontalKernelSum += (-1) * getGrayscale(input, middleCellFromBottomRowIndex + BYTES_PER_PIXEL);
+                    verticalKernelSum += (1) * input[middleCellFromBottomRowIndex + 1];
+                    horizontalKernelSum += (-1) * input[middleCellFromBottomRowIndex + 1];
 
 
                     // Edge precence value is calculated as geometric mean of both horizontal and vertical values. It's clamped between 0-255 to fit within byte size.
@@ -104,25 +103,12 @@ namespace CsLibrary
 
                     // The value is saved to the output table
                     output[outputCellIndex] = (byte)edgePresenceValue;
-                    output[outputCellIndex + 1] = (byte)edgePresenceValue;
-                    output[outputCellIndex + 2] = (byte)edgePresenceValue;
-
                     x++;
                 }
                 outputRow++;
                 y++;
             }
 
-        }
-        private static byte getGrayscale(byte[] input, int index)
-        {
-            byte blue = input[index];
-            byte green = input[index + 1];
-            byte red = input[index + 2];
-
-            byte grayscale = (byte)(0.299 * red + 0.587 * green + 0.114 * blue);
-
-            return grayscale;
         }
     }
 }

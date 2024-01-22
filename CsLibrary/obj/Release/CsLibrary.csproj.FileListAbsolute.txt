@@ -1,0 +1,6 @@
+D:\Dev\CS\edge-detection\CsLibrary\bin\Release\CsLibrary.dll
+D:\Dev\CS\edge-detection\CsLibrary\bin\Release\CsLibrary.pdb
+D:\Dev\CS\edge-detection\CsLibrary\obj\Release\CsLibrary.csproj.AssemblyReference.cache
+D:\Dev\CS\edge-detection\CsLibrary\obj\Release\CsLibrary.csproj.CoreCompileInputs.cache
+D:\Dev\CS\edge-detection\CsLibrary\obj\Release\CsLibrary.dll
+D:\Dev\CS\edge-detection\CsLibrary\obj\Release\CsLibrary.pdb

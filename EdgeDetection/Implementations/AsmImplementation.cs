@@ -12,7 +12,7 @@ namespace EdgeDetection.Implementations
 {
     internal class AsmImplementation : IConverter
     {
-        [DllImport(@"D:\Dev\CS\edge-detection\x64\Debug\AsmLibrary.dll")]
+        [DllImport(@"..\..\..\..\..\x64\Release\AsmLibrary.dll")]
         static extern void APPLY_FLITER(byte[] input, byte[] output, int width, int height, int startY, int endY);
         public long Convert(string inputPath, string outputPath, int cores)
         {
@@ -43,14 +43,17 @@ namespace EdgeDetection.Implementations
             Array.Copy(bitmapFromFile, bitmapHeader, dataOffset);
             Array.Copy(bitmapFromFile, dataOffset, bitmapWithoutHeader, 0, bitmapWithoutHeader.Length);
 
+            // Convert to grayscale
+            byte[] grayscaleData = new byte[width * height];
+            grayscaleData = GrayscaleService.ConvertToGrayscale(bitmapWithoutHeader, grayscaleData, width, height);
 
             // Pixel padding
-            byte[] paddedBitmap = paddingService.padBitmap(bitmapWithoutHeader, width, height);
+            byte[] paddedBitmap = paddingService.padBitmap(grayscaleData, width, height);
             int paddedWidth = width + 2;
             int paddedHeight = height + 2;
 
             // Split data for threads
-            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores, bytesPerPixel);
+            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores);
             Thread[] threadArray = new Thread[cores];
             for (int i = 0; i < cores; i++)
             {
@@ -90,9 +93,15 @@ namespace EdgeDetection.Implementations
             // Remove padding and attach header
             byte[] concatenatedChunksWithoutPadding = paddingService.removePadding(concatenatedChunks, paddedWidth, paddedHeight);
             byte[] outputBitmap = new byte[bitmapFromFile.Length];
-            bitmapHeader.CopyTo(outputBitmap, 0);
-            Array.Copy(concatenatedChunksWithoutPadding, 0, outputBitmap, dataOffset, concatenatedChunksWithoutPadding.Length);
 
+            for (int i = 0; i < concatenatedChunksWithoutPadding.Length; i++)
+            {
+                outputBitmap[i * 3 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 1 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 2 + dataOffset] = concatenatedChunksWithoutPadding[i];
+            }
+
+            bitmapHeader.CopyTo(outputBitmap, 0);
 
             // Save to file
             fileService.SaveByteArray(outputPath, outputBitmap);
@@ -128,14 +137,17 @@ namespace EdgeDetection.Implementations
             Array.Copy(bitmapFromFile, bitmapHeader, dataOffset);
             Array.Copy(bitmapFromFile, dataOffset, bitmapWithoutHeader, 0, bitmapWithoutHeader.Length);
 
+            // Convert to grayscale
+            byte[] grayscaleData = new byte[width * height];
+            grayscaleData = GrayscaleService.ConvertToGrayscale(bitmapWithoutHeader, grayscaleData, width, height);
 
             // Pixel padding
-            byte[] paddedBitmap = paddingService.padBitmap(bitmapWithoutHeader, width, height);
+            byte[] paddedBitmap = paddingService.padBitmap(grayscaleData, width, height);
             int paddedWidth = width + 2;
             int paddedHeight = height + 2;
 
             // Split data for threads
-            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores, bytesPerPixel);
+            List<ConversionTask> conversionTasks = ConversionTask.splitForTasks(paddedWidth, paddedHeight, cores);
             Thread[] threadArray = new Thread[cores];
             for (int i = 0; i < cores; i++)
             {
@@ -175,8 +187,15 @@ namespace EdgeDetection.Implementations
             // Remove padding and attach header
             byte[] concatenatedChunksWithoutPadding = paddingService.removePadding(concatenatedChunks, paddedWidth, paddedHeight);
             byte[] outputBitmap = new byte[bitmapFromFile.Length];
+
+            for (int i = 0; i < concatenatedChunksWithoutPadding.Length; i++)
+            {
+                outputBitmap[i * 3 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 1 + dataOffset] = concatenatedChunksWithoutPadding[i];
+                outputBitmap[(i * 3) + 2 + dataOffset] = concatenatedChunksWithoutPadding[i];
+            }
+
             bitmapHeader.CopyTo(outputBitmap, 0);
-            Array.Copy(concatenatedChunksWithoutPadding, 0, outputBitmap, dataOffset, concatenatedChunksWithoutPadding.Length);
 
             return timeEnd - timeStart;
         }
